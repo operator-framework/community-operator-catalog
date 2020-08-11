@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+echo "Need to clone default branch, cloning..."
+mkdir -p /tmp/oper
+cd /tmp/oper
+git clone https://github.com/operator-framework/community-operators.git
+cd community-operators
+ls
