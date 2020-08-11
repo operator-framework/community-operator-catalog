@@ -1,0 +1,51 @@
+dist: bionic
+language: python
+os: linux
+sudo: required
+
+if:
+  - (branch = release-pipeline-running and type = cron) or (branch = release-pipeline-running and type = api)
+
+python:
+- "3.8"
+
+#TODO: set redhat-operator-ecosystem/operator-test-playbooks
+env:
+
+- DISTRO_TYPE=upstream PLAYBOOK_VARS="-i localhost, local.yml -e kind_version=v0.8.1 -e kind_kube_ver=v1.18.2 -e olm_ver=0.15.1 -e operator_sdk_version=v0.16.0 -e ansible_connection=local -e run_remove_catalog_repo=false" PLAYBOOK_REPO=https://github.com/J0zi/operator-test-playbooks PLAYBOOK_BRANCH='upstream-community' ANSIBLE_STDOUT_CALLBACK=yaml
+
+services:
+  - docker
+
+before_install:
+  - ./prepare-codebase
+# check-pr needs to be sourced so it can pass the test early.
+#- source scripts/ci/check-pr $DISTRO_TYPE
+
+install:
+#original
+#  - scripts/ci/install-deps $DISTRO_TYPE
+  - pip install ansible jmespath
+
+jobs:
+  include:
+#  - stage: operatorhubio prod deploy
+#    name: Trigger PROD deploy of operatorhub.io
+#    script: scripts/ci/trigger-operatorhubio-ci.sh
+#    if: type = push
+
+  - stage: Release pipeline
+    name: Release Pipeline test
+    script:
+    - /tmp/oper/community-operator/scripts/ci/run-release -s
+#    if: type = push
+
+#  - name: Release Pipeline upstream
+#    script:
+#    - /tmp/oper/community-operator/scripts/ci/run-release -u
+##    if: type = push
+#
+#  - name: Release Pipeline openshift community
+#    script:
+#    - /tmp/oper/community-operator/scripts/ci/run-release -c
+##    if: type = push
