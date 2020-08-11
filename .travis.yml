@@ -3,8 +3,9 @@ language: python
 os: linux
 sudo: required
 
+#TODO: remove
 if: type = pull_request
-#  - (branch = release-pipeline-running and type = cron) or (branch = release-pipeline-running and type = api)
+#  - type = api
 
 python:
 - "3.8"
@@ -12,7 +13,7 @@ python:
 #TODO: set redhat-operator-ecosystem/operator-test-playbooks
 env:
 
-- DISTRO_TYPE=upstream PLAYBOOK_VARS="-i localhost, local.yml -e kind_version=v0.8.1 -e kind_kube_ver=v1.18.2 -e olm_ver=0.15.1 -e operator_sdk_version=v0.16.0 -e ansible_connection=local -e run_remove_catalog_repo=false" PLAYBOOK_REPO=https://github.com/J0zi/operator-test-playbooks PLAYBOOK_BRANCH='upstream-community' ANSIBLE_STDOUT_CALLBACK=yaml
+- DISTRO_TYPE=upstream PLAYBOOK_VARS="-i localhost, local.yml -e kind_version=v0.8.1 -e kind_kube_ver=v1.18.2 -e olm_ver=0.15.1 -e operator_sdk_version=v0.19.2 -e ansible_connection=local -e run_remove_catalog_repo=false" PLAYBOOK_REPO=https://github.com/J0zi/operator-test-playbooks PLAYBOOK_BRANCH='upstream-community' ANSIBLE_STDOUT_CALLBACK=yaml
 
 services:
   - docker
@@ -37,15 +38,15 @@ jobs:
   - stage: Release pipeline
     name: Release Pipeline test
     script:
-    - /tmp/oper/community-operators/scripts/ci/run-release -s
+    - cd /tmp/oper/community-operators && scripts/ci/run-release -s
 #    if: type = push
 
 #  - name: Release Pipeline upstream
 #    script:
-#    - /tmp/oper/community-operators/scripts/ci/run-release -u
+#    - cd /tmp/oper/community-operators && scripts/ci/run-release -u
 ##    if: type = push
 #
 #  - name: Release Pipeline openshift community
 #    script:
-#    - /tmp/oper/community-operators/scripts/ci/run-release -c
+#    - cd /tmp/oper/community-operators && scripts/ci/run-release -c
 ##    if: type = push
