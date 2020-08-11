@@ -37,15 +37,15 @@ jobs:
   - stage: Release pipeline
     name: Release Pipeline test
     script:
-    - /tmp/oper/community-operator/scripts/ci/run-release -s
+    - /tmp/oper/community-operators/scripts/ci/run-release -s
 #    if: type = push
 
 #  - name: Release Pipeline upstream
 #    script:
-#    - /tmp/oper/community-operator/scripts/ci/run-release -u
+#    - /tmp/oper/community-operators/scripts/ci/run-release -u
 ##    if: type = push
 #
 #  - name: Release Pipeline openshift community
 #    script:
-#    - /tmp/oper/community-operator/scripts/ci/run-release -c
+#    - /tmp/oper/community-operators/scripts/ci/run-release -c
 ##    if: type = push
