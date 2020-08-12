@@ -4,7 +4,7 @@ os: linux
 sudo: required
 
 #TODO: remove
-if: type = pull_request
+if: type = pull_request OR type = api
 #  - type = api
 
 python:
