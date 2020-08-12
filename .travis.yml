@@ -41,12 +41,12 @@ jobs:
     - cd /tmp/oper/community-operators && scripts/ci/run-release -s
 #    if: type = push
 
-#  - name: Release Pipeline upstream
-#    script:
-#    - cd /tmp/oper/community-operators && scripts/ci/run-release -u
-##    if: type = push
-#
-#  - name: Release Pipeline openshift community
-#    script:
-#    - cd /tmp/oper/community-operators && scripts/ci/run-release -c
-##    if: type = push
+  - name: Release Pipeline upstream
+    script:
+    - cd /tmp/oper/community-operators && scripts/ci/run-release -u
+#    if: type = push
+
+  - name: Release Pipeline openshift community
+    script:
+    - cd /tmp/oper/community-operators && scripts/ci/run-release -c
+#    if: type = push
