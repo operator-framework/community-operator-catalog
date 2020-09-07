@@ -13,7 +13,7 @@ python:
 #TODO: set redhat-operator-ecosystem/operator-test-playbooks
 env:
 
-- DISTRO_TYPE=upstream PLAYBOOK_VARS="-i localhost, local.yml -e kind_version=v0.8.1 -e kind_kube_ver=v1.18.2 -e olm_ver=0.15.1 -e operator_sdk_version=v0.19.2 -e ansible_connection=local -e run_remove_catalog_repo=false" PLAYBOOK_REPO=https://github.com/J0zi/operator-test-playbooks PLAYBOOK_BRANCH='sprint-12' ANSIBLE_STDOUT_CALLBACK=yaml
+- DISTRO_TYPE=upstream PLAYBOOK_VARS="-i localhost, local.yml -e kind_version=v0.8.1 -e kind_kube_ver=v1.18.2 -e olm_ver=0.15.1 -e operator_sdk_version=v0.19.2 -e ansible_connection=local -e run_remove_catalog_repo=false" PLAYBOOK_REPO=https://github.com/J0zi/operator-test-playbooks PLAYBOOK_BRANCH='upstream-community' ANSIBLE_STDOUT_CALLBACK=yaml
 
 services:
   - docker
