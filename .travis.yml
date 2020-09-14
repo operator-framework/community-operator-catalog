@@ -30,23 +30,8 @@ install:
 
 jobs:
   include:
-#  - stage: operatorhubio prod deploy
-#    name: Trigger PROD deploy of operatorhub.io
-#    script: scripts/ci/trigger-operatorhubio-ci.sh
+  - name: Index Fix Pipeline upstream
+    script:
+    - cd /tmp/oper/community-operators && scripts/ci/run-index-fix -u
 #    if: type = push
 
-  - stage: Release pipeline
-    name: Release Pipeline test
-    script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-release -s
-#    if: type = push
-
-  - name: Release Pipeline upstream
-    script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-release -u
-#    if: type = push
-
-  - name: Release Pipeline openshift community
-    script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-release -c
-#    if: type = push
