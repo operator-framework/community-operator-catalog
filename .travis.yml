@@ -1,7 +1,6 @@
 dist: bionic
 language: python
 os: linux
-sudo: required
 
 if: type = pull_request OR type = api
 
