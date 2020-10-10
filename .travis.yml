@@ -43,8 +43,7 @@ jobs:
     - cd /tmp/oper/community-operators && scripts/ci/run-app-registry
 #    if: type = push
 
-  - stage: Release Pipeline operatorhubio prod deploy
-    name: Trigger PROD deploy of operatorhub.io
+  - name: Release Pipeline Trigger PROD deploy of operatorhub.io
     script: cd /tmp/oper/community-operators && scripts/ci/trigger-operatorhubio-ci.sh
 #    if: type = push
 
