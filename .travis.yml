@@ -38,7 +38,7 @@ jobs:
     - cd /tmp/oper/community-operators && scripts/ci/run-release -c
 #    if: type = push
 
-  - name: Release Pipeline App Registry
+  - name: Release Pipeline Registry for operatorhub.io
     script:
     - cd /tmp/oper/community-operators && scripts/ci/run-app-registry
 #    if: type = push
