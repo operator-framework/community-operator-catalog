@@ -23,24 +23,19 @@ jobs:
   include:
 
   - stage: Release pipeline
-    name: Release Pipeline test
+    name: Release Pipeline upstream comminity operators
     script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-release -s
+    - cd /tmp/oper/community-operators && scripts/ci/run-index-release -u
 #    if: type = push
 
-  - name: Release Pipeline upstream
+  - name: Release Pipeline comminity-operators
     script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-release -u
-#    if: type = push
-
-  - name: Release Pipeline openshift community
-    script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-release -c
+    - cd /tmp/oper/community-operators && scripts/ci/run-index-release -c
 #    if: type = push
 
   - name: Release Pipeline Registry for operatorhub.io
     script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-app-registry
+    - cd /tmp/oper/community-operators && scripts/ci/run-operatorhubio-registry
 #    if: type = push
 
   - name: Release Pipeline Trigger PROD deploy of operatorhub.io
