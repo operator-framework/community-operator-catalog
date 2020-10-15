@@ -23,13 +23,7 @@ jobs:
   include:
 
   - stage: Release pipeline
-    name: Release Pipeline test
+    name: Release Pipeline openshift community
     script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-release -s
-#    if: type = push
-
-  - name: Release Pipeline openshift community
-    script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-index-fix -c
-    # - cd /tmp/oper/community-operators && scripts/ci/run-release -c
+    - cd /tmp/oper/community-operators && scripts/ci/run-index-release -c
 #    if: type = push
