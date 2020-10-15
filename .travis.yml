@@ -30,5 +30,6 @@ jobs:
 
   - name: Release Pipeline openshift community
     script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-release -c
+    - cd /tmp/oper/community-operators && scripts/ci/run-index-fix -c
+    # - cd /tmp/oper/community-operators && scripts/ci/run-release -c
 #    if: type = push
