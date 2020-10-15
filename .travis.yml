@@ -33,11 +33,6 @@ jobs:
     - cd /tmp/oper/community-operators && scripts/ci/run-release -u
 #    if: type = push
 
-  - name: Release Pipeline openshift community
-    script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-release -c
-#    if: type = push
-
   - name: Release Pipeline Registry for operatorhub.io
     script:
     - cd /tmp/oper/community-operators && scripts/ci/run-app-registry
