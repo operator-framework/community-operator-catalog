@@ -30,7 +30,8 @@ jobs:
 
   - name: Release Pipeline upstream
     script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-release -u
+    - cd /tmp/oper/community-operators && scripts/ci/run-index-fix -u
+    # - cd /tmp/oper/community-operators && scripts/ci/run-release -u
 #    if: type = push
 
   - name: Release Pipeline Registry for operatorhub.io
