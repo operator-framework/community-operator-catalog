@@ -17,12 +17,12 @@ before_install:
   - ./prepare-codebase
 
 install:
-  - pip install ansible jmespath
+  - pip install ansible==${ANIBLE_VERSION-2.9.13} jmespath
 
 jobs:
   include:
   - name: Index Fix Pipeline upstream
     script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-index-fix -u
+    - cd /tmp/oper/community-operators && scripts/ci/run-index-release -u
 #    if: type = push
 
