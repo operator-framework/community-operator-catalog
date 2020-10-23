@@ -17,28 +17,34 @@ before_install:
   - ./prepare-codebase
 
 install:
-  - pip install ansible jmespath
+  - pip install ansible==${ANIBLE_VERSION-2.9.13} jmespath
 
 jobs:
   include:
-
   - stage: Release pipeline
-    name: Release Pipeline upstream comminity operators
+    name: Nothing to run in master
     script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-index-release -u
+    - ansible --version
+    - echo "All OK"
 #    if: type = push
 
-  - name: Release Pipeline comminity-operators
-    script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-index-release -c
-#    if: type = push
+#   - stage: Release pipeline
+#     name: Release Pipeline upstream comminity operators
+#     script:
+#     - cd /tmp/oper/community-operators && scripts/ci/run-index-release -u
+# #    if: type = push
 
-  - name: Release Pipeline Registry for operatorhub.io
-    script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-operatorhubio-registry
-#    if: type = push
+#   - name: Release Pipeline comminity-operators
+#     script:
+#     - cd /tmp/oper/community-operators && scripts/ci/run-index-release -c
+# #    if: type = push
 
-  - name: Release Pipeline Trigger PROD deploy of operatorhub.io
-    script: cd /tmp/oper/community-operators && scripts/ci/trigger-operatorhubio-ci.sh
-#    if: type = push
+#   - name: Release Pipeline Registry for operatorhub.io
+#     script:
+#     - cd /tmp/oper/community-operators && scripts/ci/run-operatorhubio-registry
+# #    if: type = push
+
+#   - name: Release Pipeline Trigger PROD deploy of operatorhub.io
+#     script: cd /tmp/oper/community-operators && scripts/ci/trigger-operatorhubio-ci.sh
+# #    if: type = push
 
