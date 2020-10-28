@@ -23,6 +23,6 @@ jobs:
   include:
   - name: Index Fix Pipeline upstream
     script:
-    - cd /tmp/oper/community-operators && scripts/ci/run-index-release -c
+    - cd /tmp/oper/community-operators && scripts/ci/run-index-release -c $OP_STREAM_NAME_VER
 #    if: type = push
 
