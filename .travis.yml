@@ -22,18 +22,20 @@ install:
 jobs:
   include:
 
-  - stage: Release pipeline
-    name: Release Pipeline upstream
+  - name: Release Pipeline upstream
+    stage: Release pipeline
     script:
     - cd /tmp/oper/community-operators && scripts/ci/run-index-release -u
 #    if: type = push
 
   - name: Release Pipeline Registry for operatorhub.io
+    stage: Registry for operatorhub.io
     script:
     - cd /tmp/oper/community-operators && scripts/ci/run-operatorhubio-registry
 #    if: type = push
 
   - name: Release Pipeline Trigger PROD deploy of operatorhub.io
+    stage: PROD deploy of operatorhub.io
     script: cd /tmp/oper/community-operators && scripts/ci/trigger-operatorhubio-ci.sh
 #    if: type = push
 
