@@ -27,3 +27,14 @@ jobs:
     script:
     - cd /tmp/oper/community-operators && scripts/ci/run-index-release -c
 #    if: type = push
+
+#   - name: Release Pipeline Registry for dev.operatorhub.io
+#     stage: Registry for dev.operatorhub.io
+#     script:
+#     - cd /tmp/oper/community-operators && scripts/ci/run-operatorhubio-registry
+# #    if: type = push
+
+#   - name: Release Pipeline Trigger PROD deploy of dev.operatorhub.io
+#     stage: PROD deploy of dev.operatorhub.io
+#     script: cd /tmp/oper/community-operators && scripts/ci/trigger-operatorhubio-ci.sh
+# #    if: type = push
